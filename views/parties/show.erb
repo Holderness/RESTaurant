@@ -1,0 +1,8 @@
+<h3>Table Number: <%= @party.table_no %></h3>
+<h3>Number in Party: <%= @party.guest_no %></h3>
+<h3>Paid: <%= @party.paid %></h3>
+<h4><a href="/parties/<%= @party.id %>/edit">Edit Party?</a></h4>
+	<form class="delete-party" action="/parties/<%= @party.id %>" method="post">
+		<input type="hidden" name="_method" value="delete">
+		<input type="submit" value="delete">
+	</form>

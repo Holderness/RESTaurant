@@ -1,0 +1,18 @@
+<form action="/parties/<%= @party.id %>" method="post">
+	<input type="hidden" name="_method" value="patch">
+	<p>
+		Table Number:  <input name="party[table_no]" value="<%= @party.table_no %>">
+	</p>
+	<p>
+		Number in Pary: <input name="party[guest_no]" value="<%= @party.guest_no %>">
+	</p>
+	<p>
+		Paid:  <input name="party[paid]" value="<%= @party.paid %>">
+	</p>
+	<p>
+		<input type="submit" value="Edit Party">
+	</p>
+</form>
+<h4><a href="/parties">Party Menu</a></h4>
+<h4><a href="/parties/<%= @party.id %>">Party</a></h4>
+
