@@ -2,15 +2,15 @@ require 'bundler'
 Bundler.require
 
 require_relative 'models/food'
-require_relative 'models/tag'
-require_relative 'models/comment'
+require_relative 'models/order'
+require_relative 'models/party'
 
 
 
 # SETUP: CONNECTION
 ActiveRecord::Base.establish_connection(
   :adapter  => "postgresql",
-  :database => "RESTaurant_db"
+  :database => "restaurant_db"
 )
 
 
@@ -24,43 +24,47 @@ end
 # FOOD
 
 get '/foods' do
-	@foods = 
+	@foods = Food.all
 	erb :'foods/index'
 end
 
-get '/foods/:id' do
-	erb :'foods/show'
-end
 
 get '/foods/new' do
 	erb :'foods/new'
 end
 
 post '/foods' do
-	redirect 'foods/:id'
+	food = Food.create(params[:food])
+	redirect "/foods/#{food.id}"
 end 
 
-get '/foods/:id' do
+get '/foods/:id/edit' do
+	@food = Food.find(params[:id])
 	erb :'foods/edit'
 end
 
 patch '/foods/:id' do
-  redirect 'foods/:id'
+	food = Food.find(params[:id])
+	food.update(params[:food])
+  redirect "/foods/#{food.id}"
+end
+
+get '/foods/:id' do
+	@food = Food.find(params[:id])
+	erb :'foods/show'
 end
 
 delete '/foods/:id' do
-	redirect '/foods'
+	Food.destroy(params[:id])
+	redirect "/foods"
 end
 
 
 # PARTIES
 
 get '/parties' do
+	@parties = Party.all
 	erb :'parties/index'
-end
-
-get '/parties/:id' do
-	erb :'parties/show'
 end
 
 get '/parties/new' do
@@ -68,19 +72,29 @@ get '/parties/new' do
 end
 
 post '/parties' do
-	redirect 'parties/:id'
+	party = Party.create(params[:party])
+	redirect "/parties/#{party.id}"
 end 
 
-get '/parties/:id' do
+get '/parties/:id/edit' do
+	@party = Party.find(params[:id])
 	erb :'parties/edit'
 end
 
 patch '/parties/:id' do
-  redirect 'parties/:id'
+	party = Party.find(params[:id])
+	party.update(params[:party])
+  redirect "/parties/#{party.id}"
+end
+
+get '/parties/:id' do
+	@party = Party.find(params[:id])
+	erb :'parties/show'
 end
 
 delete '/parties/:id' do
-	redirect '/parties'
+	Party.destroy(params[:id])
+	redirect "/parties"
 end
 
 
