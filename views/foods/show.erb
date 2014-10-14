@@ -1,0 +1,9 @@
+<h3>Dish: <%= @food.name %></h3>
+<h3>Cuisine: <%= @food.cuisine_type %></h3>
+<h3>Price: <%= @food.price %></h3>
+<h3>Allergens: <%= @food.allergens %></h3>
+<h4><a href="/foods/<%= @food.id %>/edit">Edit Dish?</a></h4>
+	<form class="delete-food" action="/foods/<%= @food.id %>" method="post">
+		<input type="hidden" name="_method" value="delete">
+		<input type="submit" value="delete">
+	</form>
