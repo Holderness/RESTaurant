@@ -4,21 +4,26 @@ CREATE DATABASE RESTaurant_db;
 
 CREATE TABLE foods (
 id SERIAL PRIMARY KEY,
-cuisine_type varchar(30),
-price integer
-allergens varchar(30)
+name VARCHAR(30),
+cuisine_type VARCHAR(30),
+price INTEGER,
+allergens VARCHAR(255)
 );
 
 CREATE TABLE parties (
 id SERIAL PRIMARY KEY,
-weapon varchar(30),
-pet varchar(30)
+table_no INTEGER,
+guest_no INTEGER,
+paid BOOLEAN
 );
 
 CREATE TABLE orders (
 id SERIAL PRIMARY KEY,
-table integer,
-paid boolean
+food_id INTEGER,
+party_id INTEGER,
+dufresnes BOOLEAN
 );
+
+
 
 -- psql < RESTaurant_db.sql

@@ -1,0 +1,9 @@
+body {
+	font-family: Garamond, serif;
+	background: lightblue;
+}
+
+nav li {
+	display: inline;
+}
+

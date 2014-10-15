@@ -1,6 +1,8 @@
 require 'bundler'
 Bundler.require
 
+require 'pry'
+
 require_relative 'models/food'
 require_relative 'models/order'
 require_relative 'models/party'
@@ -89,6 +91,7 @@ end
 
 get '/parties/:id' do
 	@party = Party.find(params[:id])
+	@foods = Food.all
 	erb :'parties/show'
 end
 
@@ -99,3 +102,32 @@ end
 
 
 # ORDERS
+
+post '/orders' do
+	party = Party.find(params[:party_id])
+	food = Food.find(params[:food_id])
+	party.foods << food
+	binding.pry
+	redirect "/parties/#{party.id}"
+end
+
+patch '/orders/:id' do
+	redirect "/parties/#{party.id}"
+end
+
+delete '/orders' do
+	redirect "/parties/#{party.id}"
+end
+
+get '/parties/:id/receipt' do
+	erb :receipt
+end
+
+patch '/parties/:id/checkout' do
+	redirect "/parties"
+end
+
+
+
+
+
