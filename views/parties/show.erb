@@ -13,17 +13,29 @@
 
 <h3>Menu</h3>
 
-<form action="/parties/:id/orders" method="post">
+<form action="/orders" method="post">
 	<ul>
 		<% @foods.each do |food| %>
 		<li>
-		<input type="checkbox" name="food_id" value="<%= food.id %>"><%= food.name %>
+		<input type="checkbox" name="order[food_id]" value="<%= food.id %>"><%= food.name %>
 		</li>
 		<% end %>
-		<li><input type="checkbox" name="dufresnes" value="">Dufresnes?</li>
-		<input type="hidden" name="party_id" value="<%= @party.id %>">
+		<li>Dufresnes, Party of 3?</br><input type="radio" name="order[dufresnes]" value="<%= true %>">Yes, The Dufresnes Are Found</li>
+		<input type="radio" name="order[dufresnes]" value="<%= false %>">No, People Are Missing</li>
+		<input type="hidden" name="order[party_id]" value="<%= @party.id %>">
  	</ul>
-
 <input type="submit" value="PLAY GOD WITH ORDERS">
 </form>
 
+
+
+
+<h3>Order</h3>
+
+<ul>
+	<% @orders.select do |order| %>
+		<% if order[:party_id] == @party.id %>
+		<li><%= Food.where(id: order[:food_id]).map{|sql_column| sql_column[:name]}.join %></li>
+		<% end %>
+	<% end %>
+</ul>
