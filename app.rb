@@ -108,12 +108,13 @@ post '/orders' do
 end
 
 patch '/orders/:id' do
-	order = Order.where(params[:order][:party_id])
 	redirect "/parties/#{}"
 end
 
-delete '/orders' do
-	redirect "/parties/#{party.id}"
+delete '/orders/:id' do
+	party_id = Order.where(id: params[:id]).map{|c| c[:party_id]}.join
+	Order.destroy(params[:id])
+	redirect "/parties/#{party_id}"
 end
 
 get '/parties/:id/receipt' do

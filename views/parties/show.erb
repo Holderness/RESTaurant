@@ -35,7 +35,13 @@
 <ul>
 	<% @orders.select do |order| %>
 		<% if order[:party_id] == @party.id %>
-		<li><%= Food.where(id: order[:food_id]).map{|sql_column| sql_column[:name]}.join %></li>
+		<li>
+			<%= Food.where(id: order[:food_id]).map{|sql_column| sql_column[:name]}.join %>
+			<form class="delete-order" action="/orders/<%= order.id %>" method="post">
+				<input type="hidden" name="_method" value="delete">
+				<input type="submit" value="delete">
+			</form>
+		</li>
 		<% end %>
 	<% end %>
 </ul>
