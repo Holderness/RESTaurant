@@ -107,7 +107,6 @@ post '/orders' do
 	party = Party.find(params[:party_id])
 	food = Food.find(params[:food_id])
 	party.foods << food
-	binding.pry
 	redirect "/parties/#{party.id}"
 end
 

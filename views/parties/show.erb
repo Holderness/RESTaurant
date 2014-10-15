@@ -13,15 +13,15 @@
 
 <h3>Menu</h3>
 
-<form action="/orders" method="post">
+<form action="/parties/:id/orders" method="post">
 	<ul>
 		<% @foods.each do |food| %>
 		<li>
-		<input type="checkbox" name="food_id" value="food.id"><%= food.name %>
+		<input type="checkbox" name="food_id" value="<%= food.id %>"><%= food.name %>
 		</li>
 		<% end %>
-		<li><input type="checkbox" name="dufresnes" value="True">Dufresnes?</li>
-		<input type="hidden" name="party_id" value="@party.id">
+		<li><input type="checkbox" name="dufresnes" value="">Dufresnes?</li>
+		<input type="hidden" name="party_id" value="<%= @party.id %>">
  	</ul>
 
 <input type="submit" value="PLAY GOD WITH ORDERS">
