@@ -19,17 +19,44 @@ nav li {
 	display: none;
 }
 
+#paid {
+	font-size: 20px;
+	color: green;
+}
+
+#unpaid {
+	font-size: 20px;
+	color: red;
+}
+
 .submit-button {
 	margin-top: 2em;
 }
 
+.edit {
+	margin: 2.5em 0 .3em 0;
+}
+
+.item-button {
+	margin: .1em 1.3em 0 0;
+}
+
 
 ul {
+	width: 25%;
 	margin: 0 auto;
 }
 
 li {
 	list-style-type: none;
+	text-align: left;
+	margin: .5em;
+}
+
+label {
+	float: left;
+	text-align: right;
+	margin: 0;
 }
 
 p {
@@ -44,6 +71,7 @@ h2 {
 form p {
 	margin: 1em;
 }
+
 
 a:link {
 	text-decoration: none;
