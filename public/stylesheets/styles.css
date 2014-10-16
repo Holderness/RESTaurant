@@ -2,8 +2,14 @@ body {
 	text-align: center;
 	font-family: Garamond, serif;
 	background: lightblue;
+	margin-top: 2em;
 }
 
+
+nav {
+	padding-right: 2.3em;
+	margin-bottom: 2.3em;
+}
 nav li {
 	display: inline;
 }
@@ -12,15 +18,23 @@ nav li {
 	display: none;
 }
 
-#welcome {
+#table_display {
 }
 
 
 ul {
-	width: 19%;
 	margin: 0 auto;
 }
+
 li {
 	list-style-type: none;
-	text-align: left;
+}
+
+p {
+	margin: .1em;
+}
+
+
+a:link {
+	text-decoration: none;
 }
