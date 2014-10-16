@@ -9,7 +9,13 @@
 	</p>
 	<p>
 	Paid: 
-	<input type="text" name="party[paid]">
+		<input type="radio" name="party[paid]" value="<%= true %>">Yes.
+		<input type="radio" name="party[paid]" value="<%= false %>">No.
+	</p>
+	<p>
+		Dufresne, Party of 2?</br>
+		<input type="radio" name="party[dufresnes]" value="<%= true %>">Yes, The Dufresnes Are Found
+		<input type="radio" name="party[dufresnes]" value="<%= false %>">No, People Are Missing
 	</p>
 	<input type="submit" value="PLAY GOD WITH PARTIES">
 </form>

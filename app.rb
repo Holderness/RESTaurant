@@ -35,7 +35,12 @@ end
 
 post '/foods' do
 	food = Food.create(params[:food])
-	redirect "/foods/#{food.id}"
+	if food.valid?
+		redirect "/foods/#{food.id}"
+	else
+		@errors = food.errors.full_messages
+		erb :'foods/new'
+	end
 end 
 
 get '/foods/:id/edit' do
@@ -72,6 +77,7 @@ get '/parties/new' do
 end
 
 post '/parties' do
+	binding.pry
 	party = Party.create(params[:party])
 	redirect "/parties/#{party.id}"
 end 
@@ -118,7 +124,10 @@ delete '/orders/:id' do
 end
 
 get '/parties/:id/receipt' do
-	erb :receipt
+	@party = Party.find(params[:id])
+	@foods = Food.all
+	@orders = Order.all
+	erb :'parties/receipt'
 end
 
 patch '/parties/:id/checkout' do

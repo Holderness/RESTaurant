@@ -7,7 +7,14 @@
 		Number in Pary: <input name="party[guest_no]" value="<%= @party.guest_no %>">
 	</p>
 	<p>
-		Paid:  <input name="party[paid]" value="<%= @party.paid %>">
+		Paid: 
+		<input type="radio" name="party[paid]" value="<%= true %>">Yes.
+		<input type="radio" name="party[paid]" value="<%= false %>">No.
+	</p>
+	<p>
+		Dufresnes, Party of 2?</br>
+		<input type="radio" name="party[dufresnes]" value="<%= true %>">Yes, The Dufresnes Are Found
+		<input type="radio" name="party[dufresnes]" value="<%= false %>">No, People Are Missing
 	</p>
 	<p>
 		<input type="submit" value="Edit Party">
