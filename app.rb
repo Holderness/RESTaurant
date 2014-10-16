@@ -77,7 +77,6 @@ get '/parties/new' do
 end
 
 post '/parties' do
-	binding.pry
 	party = Party.create(params[:party])
 	redirect "/parties/#{party.id}"
 end 

@@ -1,4 +1,5 @@
 body {
+	text-align: center;
 	font-family: Garamond, serif;
 	background: lightblue;
 }
@@ -9,4 +10,17 @@ nav li {
 
 #print-button {
 	display: none;
+}
+
+#welcome {
+}
+
+
+ul {
+	width: 19%;
+	margin: 0 auto;
+}
+li {
+	list-style-type: none;
+	text-align: left;
 }
