@@ -3,6 +3,7 @@
 <ul>
 	<% @price_total = 0 %>
 	<li>---------------------------------------------------------</li>
+	<li>TABLE <%= @party.table_no %> ORDER :</li>
 	<% @orders.select do |order| %>
 		<% food_name = Food.where(id: order[:food_id]).map{|sql_column| sql_column[:name]}.join %>
 		<% item_price = Food.where(id: order[:food_id]).map{|sql_column| sql_column[:price]}.join.to_i %>
@@ -14,6 +15,13 @@
 			<% end %>
 	<% end %>
 	<li>---------------------------------------------------------</li>
-	<li>Total cost - <%= @price_total %>
+	<li>TIPPING GUIDE :</li>
+	<li>How was our service?</li>
+	<li>SO-SO: 15% Gratituity - <%= '%.2f' % (@price_total * 0.15) %></li>
+	<li>GREAT: 20% Gratituity - <%= '%.2f' % (@price_total * 0.20) %></li>
+	<li>EXCELLENT: 25% Gratituity - <%= '%.2f' % (@price_total * 0.25) %></li>
+	<li>---------------------------------------------------------</li>
+	<li>Balance Due - <%= '%.2f' % @price_total %></li>
+	<li>---------------------------------------------------------</li>
 </ul>
 
