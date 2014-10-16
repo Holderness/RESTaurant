@@ -5,13 +5,14 @@ body {
 	margin-top: 2em;
 }
 
-
 nav {
-	padding-right: 2.3em;
+	padding-right: 2.7em;
 	margin-bottom: 2.3em;
 }
 nav li {
 	display: inline;
+	padding-left: 1em;
+	font-size: 20px;
 }
 
 #print-button {
@@ -34,6 +35,10 @@ p {
 	margin: .1em;
 }
 
+
+form p {
+	margin: 1em;
+}
 
 a:link {
 	text-decoration: none;
