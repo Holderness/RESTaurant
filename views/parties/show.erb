@@ -1,15 +1,25 @@
+<% if @errors %>
+<div class="errors">
+<h1>THE KOALAS SCATTER. YOU HAVE <%= @errors.count %> <%= @errors.count == 1 ? "ERROR" : "ERRORS" %>.</h1>
+  <ul>
+    <% @errors.each do |error|  %>
+      <li><h2><%= error %></h2></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
 
 <h2>Table Number: <%= @party.table_no %></h2>
 <p>Number in Party: <%= @party.guest_no %></p>
-<p>Dufresne, Party of 3? <%= @party.dufresnes %></p>
+<p>Dufresne, Party of 2? <%= @party.dufresnes %></p>
 <p>
 	Paid: 
 		<strong 
 		<% if @party.paid == true %>
 		<%= "id='paid'" %>
-		<% elsif @party.paid == false %>
+		<% else @party.paid == false %>
 		<%= "id='unpaid'" %>
-		<% else %>
 		<% end %>
 		>
 		<%= @party.paid %>
@@ -18,7 +28,7 @@
 
 
 
-<h4 id="show-party-delete-edit"><a href="/parties/<%= @party.id %>/edit"> Edit Party</a>
+<h4 class="show-party-delete-edit"><a href="/parties/<%= @party.id %>/edit"> Edit Party</a>
 <label>
 <form class="delete-party" action="/parties/<%= @party.id %>" method="post">
 	<input type="hidden" name="_method" value="delete">

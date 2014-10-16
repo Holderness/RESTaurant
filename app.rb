@@ -109,7 +109,18 @@ end
 
 post '/orders' do
 	order = Order.create(params[:order])
-	redirect "/parties/#{params[:order][:party_id]}"
+	party_id = ""
+	party_id << params[:order][:party_id]
+	party_paid = Order.where(id: party_id).map{|c| c[:paid]}.join
+	redirect "/parties/#{party_id}"
+
+	if @party.paid.valid?
+
+		redirect "/foods/#{food.id}"
+	else
+		@errors = food.errors.full_messages
+		erb :'foods/new'
+	end
 end
 
 # patch '/orders/:id' do
