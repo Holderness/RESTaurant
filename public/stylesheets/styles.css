@@ -7,3 +7,6 @@ nav li {
 	display: inline;
 }
 
+#print-button {
+	display: none;
+}

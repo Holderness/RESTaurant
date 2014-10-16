@@ -113,9 +113,9 @@ post '/orders' do
 	redirect "/parties/#{params[:order][:party_id]}"
 end
 
-patch '/orders/:id' do
-	redirect "/parties/#{}"
-end
+# patch '/orders/:id' do
+# 	redirect "/parties/#{}"
+# end
 
 delete '/orders/:id' do
 	party_id = Order.where(id: params[:id]).map{|c| c[:party_id]}.join
@@ -130,10 +130,10 @@ get '/parties/:id/receipt' do
 	erb :'parties/receipt'
 end
 
-patch '/parties/:id/checkout' do
+# patch '/parties/:id/checkout' do
 
-	redirect "/parties"
-end
+# 	redirect "/parties"
+# end
 
 
 
