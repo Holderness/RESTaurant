@@ -19,7 +19,8 @@ nav li {
 	display: none;
 }
 
-#table_display {
+.submit-button {
+	margin-top: 2em;
 }
 
 
@@ -33,6 +34,10 @@ li {
 
 p {
 	margin: .1em;
+}
+
+h2 {
+	margin: 1.5em 0 .5em 0;
 }
 
 
