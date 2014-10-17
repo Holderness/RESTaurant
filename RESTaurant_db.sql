@@ -4,8 +4,8 @@ CREATE DATABASE RESTaurant_db;
 
 CREATE TABLE foods (
 id SERIAL PRIMARY KEY,
-name VARCHAR(30),
-cuisine_type VARCHAR(30),
+name VARCHAR(225),
+cuisine_type VARCHAR(225),
 price INTEGER,
 allergens VARCHAR(255)
 );
