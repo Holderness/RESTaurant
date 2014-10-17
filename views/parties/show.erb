@@ -9,12 +9,12 @@
 </div>
 <% end %>
 
-
-<h2>Table Number: <%= @party.table_no %></h2>
-<p>Number in Party: <%= @party.guest_no %></p>
-<p>Dufresne, Party of 2? <%= @party.dufresnes %></p>
-<p>
-	Paid: 
+<div>
+	<h2>Table <%= @party.table_no %></h2>
+	<p>Party of:	 <%= @party.guest_no %></p>
+	<p>Dufresne? <%= @party.dufresnes %></p>
+	<p>
+		Paid: 
 		<strong 
 		<% if @party.paid == true %>
 		<%= "id='paid'" %>
@@ -26,50 +26,48 @@
 	</strong>
 </p>
 
-
-
-<h4 class="show-party-delete-edit"><a href="/parties/<%= @party.id %>/edit"> Edit Party</a>
-<label>
-<form class="delete-party" action="/parties/<%= @party.id %>" method="post">
-	<input type="hidden" name="_method" value="delete">
-	<input class ="item-button" type="submit" value="delete party">
-</form>
-</label>
+<h4 class="show-party-delete-edit"><a href="/parties/<%= @party.id %>/edit"> <button type="button">Edit</button></a>
+	<label>
+		<form class="delete-party" action="/parties/<%= @party.id %>" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<input class ="item-button" type="submit" value="Delete">
+		</form>
+	</label>
 </h4>
+</div>
 
-<h2>Menu</h2>
+<div>
+	<h2>Menu</h2>
+	<form action="/orders" method="post">
+		<ul>
+			<% @foods.each do |food| %>
+			<li>
+				<input class="item-button" type="checkbox" name="order[food_id]" value="<%= food.id %>"><%= food.name %>
+			</li>
+			<% end %>
+			<input type="hidden" name="order[party_id]" value="<%= @party.id %>">
+		</ul>
+			<input type="submit" value="PLAY GOD WITH ORDERS">
+	</form>
+</div>
 
-<form action="/orders" method="post">
+<div>
+	<h2>Order</h2>
 	<ul>
-		<% @foods.each do |food| %>
+		<% @orders.select do |order| %>
+		<% if order[:party_id] == @party.id %>
 		<li>
-			<input class="item-button" type="checkbox" name="order[food_id]" value="<%= food.id %>"><%= food.name %>
+			<%= Food.where(id: order[:food_id]).map{|sql_column| sql_column[:name]}.join %>
+			<label>
+				<form class="delete-order" action="/orders/<%= order.id %>" method="post">
+					<input type="hidden" name="_method" value="delete">
+					<input class="item-button" type="submit" value="delete">
+				</form>
+			</label>
 		</li>
 		<% end %>
-		<input type="hidden" name="order[party_id]" value="<%= @party.id %>">
+		<% end %>
 	</ul>
-	<p class="submit-button">
-		<input type="submit" value="PLAY GOD WITH ORDERS">
-	</p>
-</form>
+</div>
 
-
-<h2>Order</h2>
-
-<ul>
-	<% @orders.select do |order| %>
-	<% if order[:party_id] == @party.id %>
-	<li>
-		<%= Food.where(id: order[:food_id]).map{|sql_column| sql_column[:name]}.join %>
-		<label>
-			<form class="delete-order" action="/orders/<%= order.id %>" method="post">
-				<input type="hidden" name="_method" value="delete">
-				<input class="item-button" type="submit" value="delete">
-			</form>
-		</label>
-	</li>
-	<% end %>
-	<% end %>
-</ul>
-
-<h4 class="receipt-button"><a href="/parties/<%= @party.id %>/receipt">Receipt</a></h4>
+<h4 class="receipt-button"><a href="/parties/<%= @party.id %>/receipt"><button type="button">Receipt</button></a></h4>

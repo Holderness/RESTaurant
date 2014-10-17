@@ -5,11 +5,11 @@
 <p>Allergens: <%= @food.allergens %></p>
 
 <h4 class="show-party-delete-edit edit">
-	<a href="/foods/<%= @food.id %>/edit">Edit Dish</a>
+	<a href="/foods/<%= @food.id %>/edit"><button type="button">Edit</button></a>
 	<label>
 	<form class="delete-food" action="/foods/<%= @food.id %>" method="post">
 		<input type="hidden" name="_method" value="delete">
-		<input class ="item-button" type="submit" value="delete dish">
+		<input class ="item-button" type="submit" value="Delete">
 	</form>
 	</label>
 </h4>
