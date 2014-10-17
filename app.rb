@@ -126,8 +126,36 @@ get '/parties/:id/receipt' do
 	@party = Party.find(params[:id])
 	@foods = Food.all
 	@orders = Order.all
+	write_receipt
 	erb :'parties/receipt'
 end
+
+def write_receipt
+	price_total = 0
+	File.open('receipts.txt', 'a+') do |f|
+	f << "-" * 52 + "\n"
+	f << "Table #{ @party.table_no } ORDER:" + "\n"
+	@orders.select do |order|
+		food = Food.where(id: order[:food_id]).map{|sql_column| sql_column[:name]}.join
+	  price = Food.where(id: order[:food_id]).map{|sql_column| sql_column[:price]}.join.to_i
+    if order[:party_id] == @party.id
+    	f << " #{ food } - #{ price }" + "\n"
+			price_total += price
+		end
+	end
+  f << "-" * 52 + "\n"
+  f << "Balace Due: #{'%.2f' % price_total}" + "\n"
+  f << "-" * 52 + "\n\n\n"
+  end
+end
+
+
+
+
+
+
+
+
 
 get '/console' do 
 	binding.pry
