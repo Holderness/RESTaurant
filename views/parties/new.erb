@@ -1,5 +1,5 @@
 
-
+<div>
 <h2>Create a Party</h2>
 
 <form action="/parties" method="post">
@@ -18,18 +18,12 @@
 	</p>
 	<p>
 		Dufresne, Party of 2?</br>
-		<input type="radio" name="party[dufresnes]" value="<%= true %>">Yes, The Dufresnes Are Found
-		<input type="radio" name="party[dufresnes]" value="<%= false %>">No, People Are Missing
+		<input type="radio" name="party[dufresnes]" value="<%= true %>">The Dufresnes Are Found
+		<input type="radio" name="party[dufresnes]" value="<%= false %>">People Are Missing
 	</p>
 	<p class="submit-button">
-	<input type="submit" value="PLAY GOD WITH PARTIES">
+	<input type="submit" value="Create">
 	</p>
 </form>
 
-
-<select>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="opel">Opel</option>
-  <option value="audi">Audi</option>
-</select>
+</div>

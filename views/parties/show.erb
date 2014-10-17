@@ -47,7 +47,7 @@
 			<% end %>
 			<input type="hidden" name="order[party_id]" value="<%= @party.id %>">
 		</ul>
-			<input type="submit" value="PLAY GOD WITH ORDERS">
+			<input type="submit" value="Add Item">
 	</form>
 </div>
 
@@ -68,6 +68,6 @@
 		<% end %>
 		<% end %>
 	</ul>
+	<h4 ><a href="/parties/<%= @party.id %>/receipt"><button type="button">Receipt</button></a></h4>
 </div>
 
-<h4 class="receipt-button"><a href="/parties/<%= @party.id %>/receipt"><button type="button">Receipt</button></a></h4>
