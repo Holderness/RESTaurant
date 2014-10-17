@@ -23,7 +23,7 @@ div {
 }
 
 ul {
-padding-left: 75px;
+padding-left: 75px;*/
 }
 
 li {
@@ -56,7 +56,7 @@ form p {
 
 
 #welcome {
-/*	margin: 1.5em 0 1.5em 0;*/
+margin: 1.5em 0 1.5em 0;
 margin: 0;
 padding: 0;
 font-size: 15em;
@@ -139,6 +139,13 @@ a:visited {
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) { 
 
+div {
+	width: 400px;
+  }
+
+#receipt {
+	padding-left: 20px;
+  }
 
 }
 

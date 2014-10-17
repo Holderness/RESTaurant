@@ -1,11 +1,11 @@
 <% if @errors %>
 <div class="errors">
-<h1>THE KOALAS SCATTER. YOU HAVE <%= @errors.count %> <%= @errors.count == 1 ? "ERROR" : "ERRORS" %>.</h1>
-  <ul>
-    <% @errors.each do |error|  %>
-      <li><h2><%= error %></h2></li>
-    <% end %>
-  </ul>
+	<h1>THE KOALAS SCATTER. YOU HAVE <%= @errors.count %> <%= @errors.count == 1 ? "ERROR" : "ERRORS" %>.</h1>
+	<ul>
+		<% @errors.each do |error|  %>
+		<li><h2><%= error %></h2></li>
+		<% end %>
+	</ul>
 </div>
 <% end %>
 
@@ -47,7 +47,7 @@
 			<% end %>
 			<input type="hidden" name="order[party_id]" value="<%= @party.id %>">
 		</ul>
-			<input type="submit" value="Add Item">
+		<input type="submit" value="Add Item">
 	</form>
 </div>
 

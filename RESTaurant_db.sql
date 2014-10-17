@@ -1,6 +1,6 @@
 CREATE DATABASE RESTaurant_db;
 
-\c RESTaurant_db;
+\c restaurant_db;
 
 CREATE TABLE foods (
 id SERIAL PRIMARY KEY,
@@ -14,14 +14,14 @@ CREATE TABLE parties (
 id SERIAL PRIMARY KEY,
 table_no INTEGER,
 guest_no INTEGER,
-paid BOOLEAN
+paid BOOLEAN,
+dufresnes BOOLEAN
 );
 
 CREATE TABLE orders (
 id SERIAL PRIMARY KEY,
 food_id INTEGER,
 party_id INTEGER,
-dufresnes BOOLEAN
 );
 
 
