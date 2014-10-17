@@ -17,10 +17,8 @@ What's faster and easier than writing down orders with pen and paper? Waiter. Wa
 a servers tasks and responsibilites into one easy-to-use app. With only a few button clicks, 
 you've posted the order, or created today's special, or set a party to a table.
 
-Waiting is a chaotic job. Waiter will let you breathe a little easier, so you can do your job 
-as intended. 
-
-Waiting.
+Waiting is a chaotic job. Let Waiter help you breathe a little easier by handling the details, 
+so you do have to wait while you serve.
 ```
 
 
