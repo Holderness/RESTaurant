@@ -1,34 +1,34 @@
 <% if @errors %>
 <div class="errors">
-<h1>THE KOALAS SCATTER. YOU HAVE <%= @errors.count %> <%= @errors.count == 1 ? "ERROR" : "ERRORS" %>.</h1>
-  <ul>
-    <% @errors.each do |error|  %>
-      <li><h2><%= error %></h2></li>
-    <% end %>
-  </ul>
+	<h1>THE KOALAS SCATTER. YOU HAVE <%= @errors.count %> <%= @errors.count == 1 ? "ERROR" : "ERRORS" %>.</h1>
+	<ul>
+		<% @errors.each do |error|  %>
+		<li><h2><%= error %></h2></li>
+		<% end %>
+	</ul>
 </div>
 <% end %>
 
 <div>
-<form action="/foods" method="post">
-	<p>
-	Dish: 
-	<input type="text" name="food[name]">
-	</p>
-	<p>
-	Cuisine: 
-	<input type="text" name="food[cuisine_type]">
-	</p>
-	<p>
-	Price: 
-	<input type="text" name="food[price]">
-	</p>
-	<p>
-	Allergens: 
-	<input type="text" name="food[allergens]">
-	</p>
-	<p class="submit-button">
-	<input type="submit" value="Create">
-  </p>
-</form>
+	<form action="/foods" method="post">
+		<p>
+			Dish: 
+			<input type="text" name="food[name]">
+		</p>
+		<p>
+			Cuisine: 
+			<input type="text" name="food[cuisine_type]">
+		</p>
+		<p>
+			Price: 
+			<input type="text" name="food[price]">
+		</p>
+		<p>
+			Allergens: 
+			<input type="text" name="food[allergens]">
+		</p>
+		<p class="submit-button">
+			<input type="submit" value="Create">
+		</p>
+	</form>
 </div>

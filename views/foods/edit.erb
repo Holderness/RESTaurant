@@ -1,21 +1,21 @@
 <div>
-<form action="/foods/<%= @food.id %>" method="post">
-	<input type="hidden" name="_method" value="patch">
-	<p>
-		Dish:  <input name="food[name]" value="<%= @food.name %>">
-	</p>
-	<p>
-		Cuisine: <input name="food[cuisine_type]" value="<%= @food.cuisine_type %>">
-	</p>
-	<p>
-		Price:  <input name="food[price]" value="<%= @food.price %>">
-	</p>
-	<p>
-		Allergens:  <input name="food[allergens]" value="<%= @food.allergens %>">
-	</p>
-	<p>
-		<input type="submit" value="Edit Dish">
-	</p>
-</form>
-<h4><a href="/foods/<%= @food.id %>">Return</a></h4>
+	<form action="/foods/<%= @food.id %>" method="post">
+		<input type="hidden" name="_method" value="patch">
+		<p>
+			Dish:  <input name="food[name]" value="<%= @food.name %>">
+		</p>
+		<p>
+			Cuisine: <input name="food[cuisine_type]" value="<%= @food.cuisine_type %>">
+		</p>
+		<p>
+			Price:  <input name="food[price]" value="<%= @food.price %>">
+		</p>
+		<p>
+			Allergens:  <input name="food[allergens]" value="<%= @food.allergens %>">
+		</p>
+		<p>
+			<input type="submit" value="Edit Dish">
+		</p>
+	</form>
+	<h4><a href="/foods/<%= @food.id %>">Return</a></h4>
 </div>

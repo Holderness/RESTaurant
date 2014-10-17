@@ -1,15 +1,15 @@
 <div>
-<h5><a href="/parties/new">Create Party</a></h5>
+	<h5><a href="/parties/new">Create Party</a></h5>
 
-<h2>Parties</h2>
+	<h2>Parties</h2>
 
 
 	<% @parties = @parties.sort_by {|party| party.table_no} %>
 	<% @parties.each do |party| %>
 	<p>
 		<a href="/parties/<%= party.id %>">
-		<%= party.table_no %>
-	  </a>
+			<%= party.table_no %>
+		</a>
 	</p>
 	<% end %>
 </div>

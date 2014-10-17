@@ -1,19 +1,18 @@
 <div>
-<h2><%= @food.name %></h2>
-<p>Cuisine: <%= @food.cuisine_type %></p>
-<p>Price: <%= @food.price %></p>
-<p>Allergens: <%= @food.allergens %></p>
+	<h2><%= @food.name %></h2>
+	<p>Cuisine: <%= @food.cuisine_type %></p>
+	<p>Price: <%= @food.price %></p>
+	<p>Allergens: <%= @food.allergens %></p>
 
-<h4 class="show-party-delete-edit edit">
-	<a href="/foods/<%= @food.id %>/edit"><button type="button">Edit</button></a>
-	<label>
-	<form class="delete-food" action="/foods/<%= @food.id %>" method="post">
-		<input type="hidden" name="_method" value="delete">
-		<input class ="item-button" type="submit" value="Delete">
-	</form>
-	</label>
-</h4>
+	<h4 class="show-party-delete-edit edit">
+		<a href="/foods/<%= @food.id %>/edit"><button type="button">Edit</button></a>
+		<label>
+			<form class="delete-food" action="/foods/<%= @food.id %>" method="post">
+				<input type="hidden" name="_method" value="delete">
+				<input class ="item-button" type="submit" value="Delete">
+			</form>
+		</label>
+	</h4>
 </div>
 
 
-	

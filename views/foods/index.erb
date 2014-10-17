@@ -1,13 +1,13 @@
 <div>
-<h5><a href="/foods/new">Create Dish</a></h5>
-<h2>Menu</h2>
+	<h5><a href="/foods/new">Create Dish</a></h5>
+	<h2>Menu</h2>
 
 	<% @foods.each do |food| %>
 	<p>
 		<a href="/foods/<%= food.id %>">
-		<%= food.name %> - <%= food.price %>
-	  </a>
-	<p>
+			<%= food.name %> - <%= food.price %>
+		</a>
+	</p>
 	<% end %>
 </div>
 
