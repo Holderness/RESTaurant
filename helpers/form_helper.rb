@@ -35,11 +35,11 @@ module Sinatra
       	value.gsub!("'") {""}
       end
       placeholder = options[:placeholder]
-      if @food == nil && type == 'submit'
+      if (@food == nil && type == 'submit') && (@party == nil && type == 'submit')
       	value = 'Create'
-      elsif @food != nil && type == 'submit'
+      elsif (@food != nil && type == 'submit') || (@party != nil && type == 'submit')
       	value = 'Edit'
-      else
+	  	else
       end
       "<input type='#{type}' name='#{resource}[#{name}]' value='#{value}'' placeholder='#{placeholder}'/>"
     end
