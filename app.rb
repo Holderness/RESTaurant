@@ -13,6 +13,11 @@ ActiveRecord::Base.establish_connection(
   :database => "restaurant_db"
 )
 
+# HELPERS
+require_relative 'helpers/link_helper'
+require_relative 'helpers/form_helper'
+helpers ActiveSupport::Inflector
+
 
 # MAIN MENU
 
@@ -87,6 +92,7 @@ get '/parties/:id/edit' do
 end
 
 patch '/parties/:id' do
+	binding.pry
 	party = Party.find(params[:id])
 	party.update(params[:party])
   redirect "/parties/#{party.id}"

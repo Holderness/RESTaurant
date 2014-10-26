@@ -38,17 +38,20 @@
 
 <div>
 	<h2>Menu</h2>
-	<form action="/orders" method="post">
+
 		<ul>
 			<% @foods.each do |food| %>
+
 			<li>
-				<input class="item-button" type="checkbox" name="order[food_id]" value="<%= food.id %>"><%= food.name %>
+				<form action="/orders" method="post">
+					<input class="item-button" type="hidden" name="order[food_id]" value="<%= food.id %>"><%= food.name %>
+					<input class="order-button" type="submit" value="add">
+					<input type="hidden" name="order[party_id]" value="<%= @party.id %>">
+				</form>
+
 			</li>
 			<% end %>
-			<input type="hidden" name="order[party_id]" value="<%= @party.id %>">
 		</ul>
-		<input type="submit" value="Add Item">
-	</form>
 </div>
 
 <div>
@@ -57,13 +60,10 @@
 		<% @orders.select do |order| %>
 		<% if order[:party_id] == @party.id %>
 		<li>
-			<%= Food.where(id: order[:food_id]).map{|sql_column| sql_column[:name]}.join %>
-			<label>
 				<form class="delete-order" action="/orders/<%= order.id %>" method="post">
-					<input type="hidden" name="_method" value="delete">
-					<input class="item-button" type="submit" value="delete">
+					<input type="hidden" name="_method" value="delete"><%= Food.where(id: order[:food_id]).map{|sql_column| sql_column[:name]}.join %> <!-- finds the food name of the object being deleted-->
+					<input class="order-button" type="submit" value="delete">
 				</form>
-			</label>
 		</li>
 		<% end %>
 		<% end %>

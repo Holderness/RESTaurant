@@ -1,29 +1,3 @@
 
-<div>
-	<h2>Create a Party</h2>
 
-	<form action="/parties" method="post">
-		<p>
-			Table Number: 
-			<input type="text" name="party[table_no]">
-		</p>
-		<p>
-			Number in Party: 
-			<input type="text" name="party[guest_no]">
-		</p>
-		<p>
-			Paid: 
-			<input type="radio" name="party[paid]" value="<%= true %>" >Yes.
-			<input type="radio" name="party[paid]" value="<%= false %>" checked >No.
-		</p>
-		<p>
-			Dufresne, Party of 2?</br>
-			<input type="radio" name="party[dufresnes]" value="<%= true %>">The Dufresnes Are Found
-			<input type="radio" name="party[dufresnes]" value="<%= false %>" checked >People Are Missing
-		</p>
-		<p class="submit-button">
-			<input type="submit" value="Create">
-		</p>
-	</form>
-
-</div>
+<%= erb(:'parties/_form', :locals => { party: Party.new, method: 'post'}) %>

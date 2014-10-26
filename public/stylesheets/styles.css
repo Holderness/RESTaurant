@@ -23,7 +23,7 @@ div {
 }
 
 ul {
-padding-left: 75px;
+ padding-left: 75px;
 }
 
 li {
@@ -108,6 +108,14 @@ font-size: 15em;
 	margin: 2em;
 }
 
+.float {
+	float:left;
+}
+
+.order-button {
+	float:left;
+	margin: .1em 1.3em 0 0;
+}
 
 
 

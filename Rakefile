@@ -2,6 +2,7 @@ require 'bundler'
 Bundler.require
 
 require 'sinatra/activerecord/rake'
+require 'pg'
 
 ActiveRecord::Base.establish_connection({
   adapter: 'postgresql',

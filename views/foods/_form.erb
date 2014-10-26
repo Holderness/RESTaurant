@@ -1,0 +1,26 @@
+<div>
+	<%= form_open(food, method: method ) %>
+	<p>
+		Dish: 
+		<%= input_tag(type: 'text', resource: 'food', name: 'name', value: food.name ) %>
+	</p>
+	<p>
+		Cuisine: 
+		<%= input_tag(type: 'text', resource: 'food', name: 'cuisine_type', value: food.cuisine_type ) %>
+	</p>
+	<p>
+		Price: 
+		<%= input_tag(type: 'number', resource: 'food', name: 'price', value: food.price ) %>
+	</p>
+	<p>
+		Allergens: 
+		<%= input_tag(type: 'text', resource: 'food', name: 'allergens', value: food.allergens ) %>
+	</p>
+	<p class="submit-button">
+		<%= input_tag(type: 'submit') %>
+	</p>
+	<%= form_close %>
+</div>
+
+
+

@@ -9,26 +9,5 @@
 </div>
 <% end %>
 
-<div>
-	<form action="/foods" method="post">
-		<p>
-			Dish: 
-			<input type="text" name="food[name]">
-		</p>
-		<p>
-			Cuisine: 
-			<input type="text" name="food[cuisine_type]">
-		</p>
-		<p>
-			Price: 
-			<input type="text" name="food[price]">
-		</p>
-		<p>
-			Allergens: 
-			<input type="text" name="food[allergens]">
-		</p>
-		<p class="submit-button">
-			<input type="submit" value="Create">
-		</p>
-	</form>
-</div>
+
+<%= erb(:'foods/_form', :locals => { food: Food.new, method: 'post'}) %>

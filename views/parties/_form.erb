@@ -1,0 +1,28 @@
+<div>
+	<%= form_open( party, method: method ) %>
+	<%= binding.pry %>
+		<p>
+			Table Number:  
+			<%= input_tag(type: 'text', resource: 'party', name: 'table_no', value: party.table_no ) %>
+		</p>
+		<p>
+			Number in Pary: 
+			<%= input_tag(type: 'text', resource: 'party', name: 'guest_no', value: party.guest_no ) %>
+		</p>
+		<p>
+			Paid: 
+			<%= input_tag(type: 'radio', resource: 'party', name: 'paid', value: true ) %>Yes.
+			<%= input_tag(type: 'radio', resource: 'party', name: 'paid', value: false ) %>
+			No.
+		</p>
+		<p>
+			Dufresnes, Party of 2?</br>
+			<%= input_tag(type: 'radio', resource: 'party', name: 'dufresnes', value: true ) %>The Dufresnes Are Found
+			<%= input_tag(type: 'radio', resource: 'party', name: 'dufresnes', value: false ) %>People Are Missing
+		</p>
+		<p>
+			<%= input_tag(type: 'submit') %>
+		</p>
+	<%= form_close %>
+	<h4><a href="/parties/<%= party.id %>">Back</a></h4>
+</div>
