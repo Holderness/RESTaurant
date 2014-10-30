@@ -1,65 +1,87 @@
-require 'bundler'
-Bundler.require
 
-require './connection'
-
-require './models/food'
-require './models/order'
-require './models/party'
-require './models/user'
+# IN CONFIG.RU
+# require './app'
+# run Sinatra::Application
 
 
-# SESSIONS
-enable :sessions
+# require 'bundler'
+# Bundler.require
 
-# HELPERS
-require './helpers/link_helper'
-require './helpers/form_helper'
-require './helpers/authentication_helper'
-helpers ActiveSupport::Inflector
+# Dir.glob('./{helpers,models,controllers}/*.rb').each do |file|
+#   require file
+#   puts "required #{file}"
+# end
 
 
-# MAIN MENU
+# map('/users'){ run UsersController }
+# map('/sessions'){ run SessionsController }
+# map('/'){ run ApplicationController }
 
-get '/' do
-	erb :index
-end
+
+
+
+# require 'bundler'
+# Bundler.require
+
+# require './connection'
+
+# require './models/food'
+# require './models/order'
+# require './models/party'
+# require './models/user'
+
+
+# # SESSIONS
+# enable :sessions
+
+# # HELPERS
+# require './helpers/link_helper'
+# require './helpers/form_helper'
+# require './helpers/authentication_helper'
+# helpers ActiveSupport::Inflector
+
+
+# # MAIN MENU
+
+# get '/' do
+# 	erb :index
+# end
 
 
 # SIGN UP
 
-get '/users/new' do
-  erb :'users/new'
-end
+# get '/users/new' do
+#   erb :'users/new'
+# end
 
-post '/users' do
-  user = User.new(params[:user])
-  user.password = params[:password]
-  user.save!
-  redirect '/'  # Normally we would direct to the show page
-end
+# post '/users' do
+#   user = User.new(params[:user])
+#   user.password = params[:password]
+#   user.save!
+#   redirect '/'  # Normally we would direct to the show page
+# end
 
 
 # LOGIN
 
-get '/login' do
-  erb :'sessions/login'
-end
+# get '/login' do
+#   erb :'sessions/login'
+# end
 
-post '/sessions' do
-  redirect '/' unless user = User.find_by({username: params[:username]})
-  if user.password == params[:password]
-    session[:current_user] = user.id
-    redirect '/' # May redirect to... show
-  else
-    redirect '/' # May redirect to log-in
-  end
-end
+# post '/sessions' do
+#   redirect '/' unless user = User.find_by({username: params[:username]})
+#   if user.password == params[:password]
+#     session[:current_user] = user.id
+#     redirect '/' # May redirect to... show
+#   else
+#     redirect '/' # May redirect to log-in
+#   end
+# end
 
-delete '/sessions' do
-  session[:current_user] = nil
-  redirect '/'
-end
+# delete '/sessions' do
+#   session[:current_user] = nil
+#   redirect '/'
+# end
 
 
 
