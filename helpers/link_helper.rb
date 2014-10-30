@@ -1,6 +1,7 @@
 module Sinatra
 	module LinkHelper
 
+
 		def link_to(url_or_record, body)
 			return "<a href='#{url_or_record}'>#{body}</a>" if url_or_record.is_a? String
 			link_to(record_path(url_or_record), body)

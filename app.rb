@@ -88,130 +88,130 @@
 
 # FOOD
 
-get '/foods' do
-	authenticate!
-	@foods = Food.all
-	erb :'foods/index'
-end
+# get '/foods' do
+# 	authenticate!
+# 	@foods = Food.all
+# 	erb :'foods/index'
+# end
 
 
-get '/foods/new' do
-	authenticate!
-	erb :'foods/new'
-end
+# get '/foods/new' do
+# 	authenticate!
+# 	erb :'foods/new'
+# end
 
-post '/foods' do
-	authenticate!
-	food = Food.create(params[:food])
-	if food.valid?
-		redirect "/foods/#{food.id}"
-	else
-		@errors = food.errors.full_messages
-		erb :'foods/new'
-	end
-end 
+# post '/foods' do
+# 	authenticate!
+# 	food = Food.create(params[:food])
+# 	if food.valid?
+# 		redirect "/foods/#{food.id}"
+# 	else
+# 		@errors = food.errors.full_messages
+# 		erb :'foods/new'
+# 	end
+# end 
 
-get '/foods/:id/edit' do
-	authenticate!
-	@food = Food.find(params[:id])
-	erb :'foods/edit'
-end
+# get '/foods/:id/edit' do
+# 	authenticate!
+# 	@food = Food.find(params[:id])
+# 	erb :'foods/edit'
+# end
 
-patch '/foods/:id' do
-	authenticate!
-	food = Food.find(params[:id])
-	food.update(params[:food])
-  redirect "/foods/#{food.id}"
-end
+# patch '/foods/:id' do
+# 	authenticate!
+# 	food = Food.find(params[:id])
+# 	food.update(params[:food])
+#   redirect "/foods/#{food.id}"
+# end
 
-get '/foods/:id' do
-	authenticate!
-	@food = Food.find(params[:id])
-	erb :'foods/show'
-end
+# get '/foods/:id' do
+# 	authenticate!
+# 	@food = Food.find(params[:id])
+# 	erb :'foods/show'
+# end
 
-delete '/foods/:id' do
-	authenticate!
-	Food.destroy(params[:id])
-	redirect "/foods"
-end
+# delete '/foods/:id' do
+# 	authenticate!
+# 	Food.destroy(params[:id])
+# 	redirect "/foods"
+# end
 
 
 # PARTIES
 
-get '/parties' do
-	authenticate!
-	@parties = Party.all
-	erb :'parties/index'
-end
+# get '/parties' do
+# 	authenticate!
+# 	@parties = Party.all
+# 	erb :'parties/index'
+# end
 
-get '/parties/new' do
-	authenticate!
-	erb :'parties/new'
-end
+# get '/parties/new' do
+# 	authenticate!
+# 	erb :'parties/new'
+# end
 
-post '/parties' do
-	authenticate!
-	party = Party.create(params[:party])
-	redirect "/parties/#{party.id}"
-end 
+# post '/parties' do
+# 	authenticate!
+# 	party = Party.create(params[:party])
+# 	redirect "/parties/#{party.id}"
+# end 
 
-get '/parties/:id/edit' do
-	authenticate!
-	@party = Party.find(params[:id])
-	erb :'parties/edit'
-end
+# get '/parties/:id/edit' do
+# 	authenticate!
+# 	@party = Party.find(params[:id])
+# 	erb :'parties/edit'
+# end
 
-patch '/parties/:id' do
-	authenticate!
-	binding.pry
-	party = Party.find(params[:id])
-	party.update(params[:party])
-  redirect "/parties/#{party.id}"
-end
+# patch '/parties/:id' do
+# 	authenticate!
+# 	binding.pry
+# 	party = Party.find(params[:id])
+# 	party.update(params[:party])
+#   redirect "/parties/#{party.id}"
+# end
 
-get '/parties/:id' do
-	authenticate!
-	@party = Party.find(params[:id])
-	@foods = Food.all
-	@orders = Order.all
-	erb :'parties/show'
-end
+# get '/parties/:id' do
+# 	authenticate!
+# 	@party = Party.find(params[:id])
+# 	@foods = Food.all
+# 	@orders = Order.all
+# 	erb :'parties/show'
+# end
 
-delete '/parties/:id' do
-	authenticate!
-	Party.destroy(params[:id])
-	redirect "/parties"
-end
+# delete '/parties/:id' do
+# 	authenticate!
+# 	Party.destroy(params[:id])
+# 	redirect "/parties"
+# end
 
 
 # ORDERS
 
-post '/orders' do
-	authenticate!
-	order = Order.create(params[:order])
-	redirect "/parties/#{order.party_id}"
-end
-
-# patch '/orders/:id' do
-# 	redirect "/parties/#{}"
+# post '/orders' do
+# 	authenticate!
+# 	order = Order.create(params[:order])
+# 	redirect "/parties/#{order.party_id}"
 # end
 
-delete '/orders/:id' do
-	authenticate!
-	party_id = Order.where(id: params[:id]).map{|c| c[:party_id]}.join
-	Order.destroy(params[:id])
-	redirect "/parties/#{party_id}"
-end
+# # patch '/orders/:id' do
+# # 	redirect "/parties/#{}"
+# # end
 
-get '/parties/:id/receipt' do
-	authenticate!
-	@party = Party.find(params[:id])
-	@foods = Food.all
-	@orders = Order.all
-	write_receipt
-	erb :'parties/receipt'
-end
+# delete '/orders/:id' do
+# 	authenticate!
+# 	party_id = Order.where(id: params[:id]).map{|c| c[:party_id]}.join
+# 	Order.destroy(params[:id])
+# 	redirect "/parties/#{party_id}"
+# end
+
+# get '/parties/:id/receipt' do
+# 	authenticate!
+# 	@party = Party.find(params[:id])
+# 	@foods = Food.all
+# 	@orders = Order.all
+# 	write_receipt
+# 	erb :'parties/receipt'
+# end
 
 def write_receipt
 	price_total = 0
@@ -240,9 +240,9 @@ end
 
 
 
-get '/console' do 
-	binding.pry
-end
+# get '/console' do 
+# 	binding.pry
+# end
 # patch '/parties/:id/checkout' do
 
 # 	redirect "/parties"

@@ -9,4 +9,7 @@ end
 
 map('/users'){ run UsersController }
 map('/sessions'){ run SessionsController }
+map('/foods'){ run FoodsController }
+map('/parties'){ run PartiesController }
+map('/orders'){ run OrdersController }
 map('/'){ run ApplicationController }
