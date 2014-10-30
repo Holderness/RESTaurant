@@ -4,10 +4,7 @@ Bundler.require
 require 'sinatra/activerecord/rake'
 require 'pg'
 
-ActiveRecord::Base.establish_connection({
-  adapter: 'postgresql',
-  database: 'restaurant_db'
-})
+require './connection'
 
 
 namespace :db do

@@ -41,12 +41,12 @@
 
 		<ul>
 			<% @foods.each do |food| %>
-
 			<li>
 				<form action="/orders" method="post">
 					<input class="item-button" type="hidden" name="order[food_id]" value="<%= food.id %>"><%= food.name %>
 					<input class="order-button" type="submit" value="add">
 					<input type="hidden" name="order[party_id]" value="<%= @party.id %>">
+					<input type="hidden" name="order[user_id]" value="<%= current_user[:id] %>">
 				</form>
 
 			</li>

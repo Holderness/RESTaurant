@@ -1,21 +1,21 @@
 require 'bundler'
 Bundler.require
 
-require_relative 'models/food'
-require_relative 'models/order'
-require_relative 'models/party'
+require './connection'
+
+require './models/food'
+require './models/order'
+require './models/party'
+require './models/user'
 
 
-
-# SETUP: CONNECTION
-ActiveRecord::Base.establish_connection(
-  :adapter  => "postgresql",
-  :database => "restaurant_db"
-)
+# SESSIONS
+enable :sessions
 
 # HELPERS
-require_relative 'helpers/link_helper'
-require_relative 'helpers/form_helper'
+require './helpers/link_helper'
+require './helpers/form_helper'
+require './helpers/authentication_helper'
 helpers ActiveSupport::Inflector
 
 
@@ -26,19 +26,60 @@ get '/' do
 end
 
 
+# SIGN UP
+
+get '/users/new' do
+  erb :'users/new'
+end
+
+post '/users' do
+  user = User.new(params[:user])
+  user.password = params[:password]
+  user.save!
+  redirect '/'  # Normally we would direct to the show page
+end
+
+
+# LOGIN
+
+get '/login' do
+  erb :'sessions/login'
+end
+
+post '/sessions' do
+  redirect '/' unless user = User.find_by({username: params[:username]})
+  if user.password == params[:password]
+    session[:current_user] = user.id
+    redirect '/' # May redirect to... show
+  else
+    redirect '/' # May redirect to log-in
+  end
+end
+
+delete '/sessions' do
+  session[:current_user] = nil
+  redirect '/'
+end
+
+
+
+
 # FOOD
 
 get '/foods' do
+	authenticate!
 	@foods = Food.all
 	erb :'foods/index'
 end
 
 
 get '/foods/new' do
+	authenticate!
 	erb :'foods/new'
 end
 
 post '/foods' do
+	authenticate!
 	food = Food.create(params[:food])
 	if food.valid?
 		redirect "/foods/#{food.id}"
@@ -49,22 +90,26 @@ post '/foods' do
 end 
 
 get '/foods/:id/edit' do
+	authenticate!
 	@food = Food.find(params[:id])
 	erb :'foods/edit'
 end
 
 patch '/foods/:id' do
+	authenticate!
 	food = Food.find(params[:id])
 	food.update(params[:food])
   redirect "/foods/#{food.id}"
 end
 
 get '/foods/:id' do
+	authenticate!
 	@food = Food.find(params[:id])
 	erb :'foods/show'
 end
 
 delete '/foods/:id' do
+	authenticate!
 	Food.destroy(params[:id])
 	redirect "/foods"
 end
@@ -73,25 +118,30 @@ end
 # PARTIES
 
 get '/parties' do
+	authenticate!
 	@parties = Party.all
 	erb :'parties/index'
 end
 
 get '/parties/new' do
+	authenticate!
 	erb :'parties/new'
 end
 
 post '/parties' do
+	authenticate!
 	party = Party.create(params[:party])
 	redirect "/parties/#{party.id}"
 end 
 
 get '/parties/:id/edit' do
+	authenticate!
 	@party = Party.find(params[:id])
 	erb :'parties/edit'
 end
 
 patch '/parties/:id' do
+	authenticate!
 	binding.pry
 	party = Party.find(params[:id])
 	party.update(params[:party])
@@ -99,6 +149,7 @@ patch '/parties/:id' do
 end
 
 get '/parties/:id' do
+	authenticate!
 	@party = Party.find(params[:id])
 	@foods = Food.all
 	@orders = Order.all
@@ -106,6 +157,7 @@ get '/parties/:id' do
 end
 
 delete '/parties/:id' do
+	authenticate!
 	Party.destroy(params[:id])
 	redirect "/parties"
 end
@@ -114,6 +166,7 @@ end
 # ORDERS
 
 post '/orders' do
+	authenticate!
 	order = Order.create(params[:order])
 	redirect "/parties/#{order.party_id}"
 end
@@ -123,12 +176,14 @@ end
 # end
 
 delete '/orders/:id' do
+	authenticate!
 	party_id = Order.where(id: params[:id]).map{|c| c[:party_id]}.join
 	Order.destroy(params[:id])
 	redirect "/parties/#{party_id}"
 end
 
 get '/parties/:id/receipt' do
+	authenticate!
 	@party = Party.find(params[:id])
 	@foods = Food.all
 	@orders = Order.all
