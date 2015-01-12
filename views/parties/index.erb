@@ -8,10 +8,10 @@
 
 	<% @parties = @parties.sort_by {|party| party.table_no} %>
 	<% @parties.each do |party| %>
-	<p>
-		<a href="/parties/<%= party.id %>">
-			<%= party.table_no %>
-		</a>
-	</p>
+	  <p>
+		  <a href="/parties/<%= party.id %>">
+			  <%= party.table_no %>
+		  </a>
+	  </p>
 	<% end %>
 </div>
