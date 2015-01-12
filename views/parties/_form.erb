@@ -1,5 +1,10 @@
 <div>
-	<%= form_open( party, method: method ) %>
+	<% if method == "patch" %>
+		<%= open_form_tag( party, method )%>
+	<% elsif method == "get" %>
+	  <%= form_open( party, method: method ) %>
+	<% else %>
+	<% end %>
 		<p>
 			Table Number:  
 			<%= input_tag(type: 'text', resource: 'party', name: 'table_no', value: party.table_no ) %>
@@ -11,8 +16,7 @@
 		<p>
 			Paid: 
 			<%= input_tag(type: 'radio', resource: 'party', name: 'paid', value: true ) %>Yes.
-			<%= input_tag(type: 'radio', resource: 'party', name: 'paid', value: false ) %>
-			No.
+			<%= input_tag(type: 'radio', resource: 'party', name: 'paid', value: false ) %>No.
 		</p>
 		<p>
 			Dufresnes, Party of 2?</br>

@@ -1,6 +1,10 @@
 module Sinatra
 	module FormHelper
 
+
+		##########################OK so these open_form_tag and form_open functions are being shitty.
+		################# rewrite rewrite
+
 		def form_open(record, options={})
 			# form_open(party, {method: "patch"})
 			if options[:method]
@@ -9,17 +13,18 @@ module Sinatra
 				method = record.persisted? ? 'get' : 'post'
 			end
 			action = resource_index_path(record.class.to_s.downcase)
+			binding.pry
 			open_form_tag(action, method, record)
 		end
 
 		def open_form_tag(action, method, record)
-			full_action = [action, record.id].compact.join("/")
+			# full_action = [action.id].compact.join("/")
 			str = ""
 			if ["delete", "patch", "put"].include?(method)
-				str << "<form action='#{full_action}' method='post'>"
-				str << "<input type='hiddien' name='_method' value='#{method}' />"
+				str << "<form action='#{action}' method='post'>"
+				str << "<input type='hidden' name='_method' value='#{method}' />"
 			else
-				str << "<form action='#{full_action}' method='#{method}'>"
+				str << "<form action='#{action}' method='#{method}'>"
 			end
 		end
 
@@ -38,6 +43,7 @@ module Sinatra
       	value = 'Edit'
       else
       end
+
 			"<input type='#{type}' name='#{resource}[#{name}]' value='#{value}' placeholder='#{placeholder}'/>"
 		end
 

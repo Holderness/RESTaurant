@@ -17,19 +17,21 @@ class PartiesController < ApplicationController
 		redirect "/parties/#{party.id}"
 	end 
 
+	patch '/:id' do
+		party = Party.find(params[:id])
+		party.update(params[:party])
+		binding.pry
+		redirect "/parties/#{party.id}"
+	end
+
+
 	get '/:id/edit' do
-		authenticate!
 		@party = Party.find(params[:id])
 		erb :'parties/edit'
 	end
 
-	patch '/:id' do
-		authenticate!
-		binding.pry
-		party = Party.find(params[:id])
-		party.update(params[:party])
-		redirect "/parties/#{party.id}"
-	end
+
+
 
 	get '/:id' do
 		authenticate!

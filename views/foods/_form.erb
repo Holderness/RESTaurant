@@ -1,5 +1,9 @@
 <div>
-	<%= form_open(food, method: method ) %>
+	<% if method == "patch" || method == "delete" || method == "puts" %>
+		<%= open_form_tag( food, method: method ) %>
+	<% else %>
+	  <%= form_open( food, method: method ) %>
+	<% end %>
 	<p>
 		Dish: 
 		<%= input_tag(type: 'text', resource: 'food', name: 'name', value: food.name ) %>

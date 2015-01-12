@@ -1,7 +1,4 @@
 class FoodsController < ApplicationController
-  
-  require 'active_support/core_ext/string'
-  helpers ActiveSupport::Inflector
 
 	get '/' do
 		authenticate!
@@ -33,7 +30,6 @@ class FoodsController < ApplicationController
 	end
 
 	patch '/:id' do
-		authenticate!
 		food = Food.find(params[:id])
 		food.update(params[:food])
 		redirect "/foods/#{food.id}"
