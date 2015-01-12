@@ -1,5 +1,6 @@
 <div>
 	<% if method == "patch" %>
+	<%= binding.pry %> 
 		<%= open_form_tag( party, method )%>
 	<% elsif method == "get" %>
 	  <%= form_open( party, method: method ) %>

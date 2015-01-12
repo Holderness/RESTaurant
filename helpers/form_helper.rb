@@ -14,10 +14,10 @@ module Sinatra
 			end
 			action = resource_index_path(record.class.to_s.downcase)
 			binding.pry
-			open_form_tag(action, method, record)
+			open_form_tag(action, method, record: record)
 		end
 
-		def open_form_tag(action, method, record)
+		def open_form_tag(action, method, options={})
 			# full_action = [action.id].compact.join("/")
 			str = ""
 			if ["delete", "patch", "put"].include?(method)

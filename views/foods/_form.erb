@@ -1,6 +1,6 @@
 <div>
 	<% if method == "patch" || method == "delete" || method == "puts" %>
-		<%= open_form_tag( food, method: method ) %>
+		<%= open_form_tag( food, method ) %>
 	<% else %>
 	  <%= form_open( food, method: method ) %>
 	<% end %>

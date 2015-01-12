@@ -29,7 +29,7 @@ class FoodsController < ApplicationController
 		erb :'foods/edit'
 	end
 
-	patch '/:id' do
+	patch '/:id/edit' do
 		food = Food.find(params[:id])
 		food.update(params[:food])
 		redirect "/foods/#{food.id}"
