@@ -13,7 +13,6 @@ module Sinatra
 				method = record.persisted? ? 'get' : 'post'
 			end
 			action = resource_index_path(record.class.to_s.downcase)
-			binding.pry
 			open_form_tag(action, method, record: record)
 		end
 

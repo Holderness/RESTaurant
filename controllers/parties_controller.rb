@@ -17,6 +17,7 @@ class PartiesController < ApplicationController
 		redirect "/parties/#{party.id}"
 	end 
 
+
 	patch '/:id/edit' do
 		party = Party.find(params[:id])
 		party.update(params[:party])

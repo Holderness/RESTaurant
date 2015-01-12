@@ -1,10 +1,8 @@
 <div>
-	<% if method == "patch" %>
-	<%= binding.pry %> 
+	<% if method == "patch" || method == "delete" || method == "puts" %>
 		<%= open_form_tag( party, method )%>
-	<% elsif method == "get" %>
-	  <%= form_open( party, method: method ) %>
 	<% else %>
+	  <%= form_open( party, method: method ) %>
 	<% end %>
 		<p>
 			Table Number:  
