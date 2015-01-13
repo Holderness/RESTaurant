@@ -13,6 +13,8 @@ class ApplicationController < Sinatra::Base
   enable :sessions
   enable :method_override
 
+  after { ActiveRecord::Base.connection.close }
+
   get '/' do
 	  erb :index
   end
