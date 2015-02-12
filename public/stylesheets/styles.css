@@ -81,6 +81,18 @@ font-size: 15em;
 }
 
 
+.button-style {
+	-webkit-appearance: none;
+	background-color: #BBDCED;
+	width: 62px;
+	height: 22px;
+	font-family: garamond;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000;
+	border: solid 1px #765E8A;
+	border-radius: 26px;
+}
 
 .submit-button {
 	margin-top: .7em;
@@ -117,6 +129,12 @@ font-size: 15em;
 	margin: .1em 1.3em 0 0;
 }
 
+.larger-button-style {
+  border: solid 1px #765E8A;
+  font-size: 20px;
+  width: 115px;
+  height: 40px;
+}
 
 
 a:hover {
