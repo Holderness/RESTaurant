@@ -16,15 +16,34 @@ class ApplicationController < Sinatra::Base
   after { ActiveRecord::Base.connection.close }
 
   get '/' do
-	  erb :index
+    erb :index
   end
 
   get '/login' do
-		erb :'sessions/login'
-	end
+    erb :'sessions/login'
+  end
+ 
+  get '/console' do 
+    binding.pry
+  end
 
-	get '/console' do 
-	  binding.pry
+  def write_receipt
+    price_total = 0
+    File.open('receipts.txt', 'a+') do |f|
+      f << "-" * 52 + "\n"
+      f << "Table #{ @party.table_no } ORDER:" + "\n"
+      @orders.select do |order|
+        food = Food.where(id: order[:food_id]).map{|sql_column| sql_column[:name]}.join
+        price = Food.where(id: order[:food_id]).map{|sql_column| sql_column[:price]}.join.to_i
+        if order[:party_id] == @party.id
+          f << " #{ food } - #{ price }" + "\n"
+          price_total += price
+        end
+      end
+      f << "-" * 52 + "\n"
+      f << "Balace Due: #{'%.2f' % price_total}" + "\n"
+      f << "-" * 52 + "\n\n\n"
+    end
   end
 
 end
