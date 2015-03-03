@@ -61,7 +61,7 @@
 		    <li>
 				  <form class="delete-order" action="/orders/<%= order.id %>" method="post">
 					  <input type="hidden" name="_method" value="delete"><%= Food.where(id: order[:food_id]).map{|sql_column| sql_column[:name]}.join %> <!-- finds the food name of the object being deleted-->
-					  <input class="order-button" type="submit" value="&dash;">
+					  <input class="order-button" type="submit" value="&times;">
 				  </form>
 		    </li>
 		  <% end %>
